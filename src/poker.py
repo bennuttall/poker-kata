@@ -4,6 +4,18 @@ from random import shuffle
 VALUES = ('2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A')
 SUITS = ('H', 'D', 'S', 'C')
 
+HAND_TYPES = (
+        'High Card',
+        'Pair',
+        'Two Pairs',
+        'Three of a Kind',
+        'Straight',
+        'Flush',
+        'Full House',
+        'Four of a Kind',
+        'Straight Flush'
+)
+
 class Card:
     def __init__(self, value, suit):
         value = str(value)
