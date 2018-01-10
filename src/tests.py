@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from poker import Card, PokerHand, create_deck, deal_hand
 
 # some useful card suit/value constants
@@ -12,29 +13,44 @@ S = 'S'
 C = 'C'
 # you can use integers for the others (but not 10 - use T)
 
+# some useful test helper-functions
+def compare_things(thing_1, op, thing_2):
+    assert op in ('<', '=', '>')
+    assert type(thing_1) == type(thing_2)
+    if op == '<':
+        assert thing_1 < thing_2
+        assert not thing_1 > thing_2
+        assert not thing_1 == thing_2
+        assert thing_1 != thing_2
+    elif op == '=':
+        assert thing_1 == thing_2
+        assert not thing_1 != thing_2
+        assert not thing_1 < thing_2
+        assert not thing_1 > thing_2
+    elif op == '>':
+        assert thing_1 > thing_2
+        assert not thing_1 < thing_2
+        assert not thing_1 == thing_2
+        assert thing_1 != thing_2
+
+def create_hand(hand_str):
+    return PokerHand([Card(card_str[0], card_str[1]) for card_str in hand_str.split()])
+
+def compare_hands(hand_str1, op, hand_str2):
+    compare_things(create_hand(hand_str1), op, create_hand(hand_str2))
+
 # test single card
 card_1 = Card(A, S)
 card_2 = Card(A, D)
-assert card_1 == card_2
+compare_things(card_1, '=', card_2)
 card_3 = Card(K, S)
-assert card_1 != card_3
-assert card_1 > card_3
-assert not card_1 < card_3
+compare_things(card_1, '>', card_3)
+compare_things(card_2, '>', card_3)
 
 # test comparing two poker hands
-cards = [Card(v, s) for v, s in [(A, S), (2, D), (4, C), (7,  H), (K, S)]]
-hand_1 = PokerHand(cards)
-cards = [Card(v, s) for v, s in [(A, C), (3, D), (5, C), (8,  H), (T, S)]]
-hand_2 = PokerHand(cards)
-assert hand_1 == hand_2
-assert hand_2 == hand_1
+compare_hands('AS 2D 4C 7H KS', '=', 'AC 3D 5C 8H TS')
 
-cards = [Card(v, s) for v, s in [(A, S), (2, D), (4, C), (7,  H), (K, S)]]
-hand_1 = PokerHand(cards)
-cards = [Card(v, s) for v, s in [(Q, S), (3, D), (5, C), (8,  H), (T, S)]]
-hand_2 = PokerHand(cards)
-assert hand_1 > hand_2
-assert hand_2 < hand_1
+compare_hands('AS 2D 4C 7H KS', '>', 'QS 3D 5C 8H TS')
 
 # test creating a deck
 deck = create_deck()
