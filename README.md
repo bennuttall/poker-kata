@@ -1,4 +1,4 @@
-# poker hands kata
+# Poker Hands kata
 
 Some starter code is provided. It is the beginnings of an implementation of a
 poker hands comparison tool. In its current state it simply judges hands based

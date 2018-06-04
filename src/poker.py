@@ -4,13 +4,14 @@ SUITS = 'HDSC'
 HAND_RANKS = (
     'High Card',
     'Pair',
-    'Two Pairs',
+    'Two Pair',
     'Three of a Kind',
     'Straight',
     'Flush',
     'Full House',
     'Four of a Kind',
-    'Straight Flush'
+    'Straight Flush',
+    'Royal Flush'
 )
 
 class Card:
