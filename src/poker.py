@@ -1,6 +1,3 @@
-from itertools import product
-from random import shuffle
-
 VALUES = '23456789TJQKA'
 SUITS = 'HDSC'
 
