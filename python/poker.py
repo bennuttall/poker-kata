@@ -89,4 +89,34 @@ class PokerHand:
 
     @property
     def rank(self):
+        suits = [card.suit for card in self]
+        suits_set = {card.suit for card in self}
+        
+        values = [card.value for card in self]
+        values_set = {card.value for card in self}
+        value_counts = {values.count(v) for v in values}
+        values_str = ''.join(values)
+        
+        flush = len(suits_set) == 1
+        straight = values_str in VALUES or values_str == '2345A'
+        royal = values_str == 'TJQKA'
+        
+        if flush:
+            if royal:
+                return 'Royal Flush'
+            if straight:
+                return 'Straight Flush'
+            return 'Flush'
+        if straight:
+            return 'Straight'
+        if len(values_set) == 2:
+            if 4 in value_counts:
+                return 'Four of a Kind'
+            return 'Full House'
+        if len(values_set) == 3:
+            if 3 in value_counts:
+                return 'Three of a Kind'
+            return 'Two Pair'
+        if len(values_set) == 4:
+            return 'Pair'
         return 'High Card'
