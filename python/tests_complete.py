@@ -1,4 +1,4 @@
-from poker import Card, PokerHand
+from poker import PokerHand
 
 # test high card rank
 hand = PokerHand('3D JC 8S 4H 2C')
