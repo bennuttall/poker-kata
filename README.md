@@ -117,6 +117,20 @@ for an example of each rank.
 1. When you're happy with your test coverage, try running `tests_complete.py`
 to see if you missed any!
 
+## Further Testing
+
+For the purposes of exhaustive testing, all 2,598,960 possible combinations of
+cards have been ranked and stored in a gzipped JSON file. To test your
+algorithm against all possible combinations, unzip the `hand_ranks.json.gz`
+file and run `test_hand_ranks.py`:
+
+```bash
+gunzip hand_ranks.json.gz
+python3 test_hand_ranks.py
+```
+
+You should see `All tests passing!` - if not, you'll see the first failed assertion.
+
 ## Extension
 
 Once you have finished ranking hands, try something else:
