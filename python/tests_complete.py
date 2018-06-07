@@ -33,7 +33,7 @@ assert hand.rank == 'Two Pair', hand.rank
 hand = PokerHand('2H 3H 2D 3S AS')
 assert hand.rank == 'Two Pair', hand.rank
 
-hand = PokerHand('TS QS KD 2D TC')
+hand = PokerHand('TS QS KD QD TC')
 assert hand.rank == 'Two Pair', hand.rank
 
 hand = PokerHand('8D 7H 7C 8C AC')
